@@ -13,7 +13,7 @@ const driversArr = [
     name: "Ramesh",
     availability: "true",
     location: {
-      x: "12.233",
+      x: "12.283",
       y: "13.76",
     },
   },
@@ -22,7 +22,7 @@ const driversArr = [
     name: "Vikrant",
     availability: "true",
     location: {
-      x: "12.233",
+      x: "12.133",
       y: "13.76",
     },
   },
@@ -46,7 +46,7 @@ const findNearestCab = ({ riderLocation, drivers = [] }) => {
     const distance = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
     // if any driver with lessr distance is found, we are assigning that driver to be at the nearest distance to the rider.
     if (distance < nearestDistance) {
-      nearestDriver = drivers[index];
+      nearestDriver = JSON.parse(JSON.stringify(drivers[index]));
     }
   });
   //Finally returning the nearest driver
@@ -89,3 +89,7 @@ const endTrip = ({ rider, currentLocationOfCab }) => {
     return;
   }
 };
+
+console.log(
+  findNearestCab({ riderLocation: { x: 12.0, y: 13 }, drivers: driversArr })
+);
